@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccline", "ccline\ccline.vcproj", "{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1FF79623-64BE-449E-8499-36B7153B014E} = {1FF79623-64BE-449E-8499-36B7153B014E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExceptionReport", "ExceptionReport\ExceptionReport.vcproj", "{1FF79623-64BE-449E-8499-36B7153B014E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|VMCE_SDK (x86) = Debug|VMCE_SDK (x86)
+		Debug|Win32 = Debug|Win32
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|VMCE_SDK (x86) = Release|VMCE_SDK (x86)
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|Mixed Platforms.ActiveCfg = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|Mixed Platforms.Build.0 = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|Mixed Platforms.Deploy.0 = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|VMCE_SDK (x86).ActiveCfg = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|VMCE_SDK (x86).Build.0 = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|VMCE_SDK (x86).Deploy.0 = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Debug|Win32.ActiveCfg = Debug|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|Mixed Platforms.ActiveCfg = Release|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|Mixed Platforms.Build.0 = Release|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|Mixed Platforms.Deploy.0 = Release|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|VMCE_SDK (x86).ActiveCfg = Release|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|VMCE_SDK (x86).Build.0 = Release|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|VMCE_SDK (x86).Deploy.0 = Release|VMCE_SDK (x86)
+		{59AFF211-9EB2-45F3-BD9C-4C02D34127EC}.Release|Win32.ActiveCfg = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|Mixed Platforms.ActiveCfg = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|Mixed Platforms.Build.0 = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|Mixed Platforms.Deploy.0 = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|VMCE_SDK (x86).ActiveCfg = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|VMCE_SDK (x86).Build.0 = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|VMCE_SDK (x86).Deploy.0 = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Debug|Win32.ActiveCfg = Debug|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|Mixed Platforms.ActiveCfg = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|Mixed Platforms.Build.0 = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|Mixed Platforms.Deploy.0 = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|VMCE_SDK (x86).ActiveCfg = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|VMCE_SDK (x86).Build.0 = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|VMCE_SDK (x86).Deploy.0 = Release|VMCE_SDK (x86)
+		{1FF79623-64BE-449E-8499-36B7153B014E}.Release|Win32.ActiveCfg = Release|VMCE_SDK (x86)
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,60 @@
+Helpful Hints for Maximizing Your CrashFinder Pleasure
+
+- This version has wondeful updates from Scott Bloom, Ching 
+Ming Kwok, Jeff Shanholtz, Rich Peters, and Pablo Presedo! 
+They all added lots of great code and suggested some the
+features for CrashFinder 3.0.  Many thanks to all of them
+for extending CrashFinder!
+
+- Please read my book, "Debugging Applications" from 
+Microsoft Press for a complete discussion of CrashFinder.
+
+- In a nutshell, CrashFinder can help you find the source, line,
+and function where a crash occured when you only are given
+the a hexadecimal address from a beta tester, or worse yet,
+your boss!  CrashFinder works with both Visual Basic and
+Visual C++ programs.
+
+- A CrashFinder Project is an EXE and it's associated DLLs
+and OCX's.  Create a new CrashFinder Project and add the
+main EXE with all the DLLs/OCXs it loads by pressing Ctrl+A
+to insert them.  After all the binaries are loaded, press
+Ctrl+F to find the source, line and function of any
+hexadecimal crash address.
+
+- CrashFinder works best with DBGHELP.DLL from Windows
+2000.  Additionally, to build the CrashFinder sources you 
+will need to install the latest Platform SDK.
+
+- You need to make your release builds with debug symbols
+by setting the options in your VB project or VC makefile.
+A program compiled without debug symbols should never
+leave your shop.
+CL.EXE -> /Zi
+LINK.EXE -> /DEBUG /OPT:REF
+
+- TURNING ON DEBUG SYMBOLS DOES NOT MEAN 
+THAT YOU ARE DOING A DEBUG BUILD.  THE 
+DEBUG SYMBOLS ARE IN YOUR PDB FILES SO 
+UNLESS YOU ARE GIVING THOSE TO YOUR 
+CUSTOMERS, YOU ARE NOT GIVING AWAY ANY 
+SECRETS.
+
+- You need to either use REBASE on you DLLs so that they
+all load at a unique address space or set the base address
+for each DLL manually in your IDE.  If you are not rebasing
+now, you should be very worried.  Use Mark Russinovich's
+LISTDLLS.EXE from www.sysinternals.com to check if you 
+need to rebase your DLLs.  By not rebasing, you are not
+only making it impossible to figure out where your 
+application crashed, you are slowing down the DLL load time
+considerably.
+
+- You should keep copies of the binaries that you send out in
+a very safe place.  This way CrashFinder will find any
+addresses correctly with exactly what is out in the field.
+You should put your .PDB files with the binaries as well.
+
+- To keep your relationship from crashing, you should give
+your partner a big hug and tell him or her that you love
+them every day.

@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrashFinder", "CrashFinder.vcproj", "{2EC40E91-AC73-4292-85A6-1E3E8E56F297}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{2EC40E91-AC73-4292-85A6-1E3E8E56F297}.Debug.ActiveCfg = Debug|Win32
+		{2EC40E91-AC73-4292-85A6-1E3E8E56F297}.Debug.Build.0 = Debug|Win32
+		{2EC40E91-AC73-4292-85A6-1E3E8E56F297}.Release.ActiveCfg = Release|Win32
+		{2EC40E91-AC73-4292-85A6-1E3E8E56F297}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

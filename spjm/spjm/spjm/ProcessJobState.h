@@ -91,6 +91,7 @@
 #include <boost/statechart/transition.hpp>
 #include <boost/statechart/state.hpp>
 #include <boost/statechart/shallow_history.hpp>
+#include <boost/statechart/deep_history.hpp>
 #include <boost/mpl/list.hpp>
 
 //#include <boost/signals.hpp>
@@ -101,7 +102,7 @@ namespace mpl = boost::mpl;
 
 namespace pjm
 {
-// define event
+// define event of Processing
 class EvAllocate  : public sc::event< EvAllocate > {};   //
 class EvStart     : public sc::event< EvStart > {};      //
 class EvCompleted : public sc::event< EvCompleted > {};  //
@@ -114,10 +115,20 @@ class EvStopped   : public sc::event< EvStopped > {};    //
 class EvAbort     : public sc::event< EvAbort > {};      //
 class EvAborted   : public sc::event< EvAborted > {};    //
 class EvCancel    : public sc::event< EvCancel > {};     //
+
+// define event of Stepping
+class EvStepAlloc : public sc::event<EvStepAlloc> {};
+class EvStepStart : public sc::event<EvStepStart> {};
+class EvStepEnd : public sc::event<EvStepEnd> {};
+class EvStepDepart : public sc::event<EvStepDepart> {};
+class EvStepJump : public sc::event<EvStepJump> {};
+class EvStepComplete : public sc::event<EvStepComplete> {};
+
 }
 
 namespace pjm
-{// define state
+{
+	// define state of Processing
 class QueuedAndPooled;
 class SettingUp;
 class Executing;
@@ -133,6 +144,13 @@ class Active;
 class Stopped;
 class Aborted;
 class PostActive;
+
+//define of Stepping
+class StepQueued;
+class StepSetUp;
+class StepRunning;
+class StepEnd;
+class StepCompleted;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -251,7 +269,7 @@ public:
 //-----------------------------------------------------------------------------
 //
 class Executing 
-	: public sc::simple_state< Executing, Active, SettingUp, sc::has_shallow_history >
+	: public sc::simple_state< Executing, Active, SettingUp, sc::has_deep_history >
 {
 public :
 	typedef mpl::list
@@ -319,12 +337,12 @@ public:
 //-----------------------------------------------------------------------------
 //
 class Processing 
-	: public sc::state< Processing, Executing>
+	: public sc::state< Processing, Executing, StepQueued>
 {
 public:
-	typedef sc::transition< EvCompleted, ProcessCompleted > reactions;
+	//typedef sc::transition< EvCompleted, ProcessCompleted > reactions;
 
-	 Processing(my_context ctx) :  my_base(ctx)
+	 Processing(my_context ctx) : my_base(ctx)
 	{
 		outermost_context().SetState( "Processing");
 		std::cout<< "Enter Processing\n";
@@ -335,6 +353,99 @@ public:
 	}
 };
 
+class StepQueued
+	: public sc::state<StepQueued, Processing>
+{
+public:
+	typedef mpl::list
+		<
+		sc::transition< EvStepAlloc, StepSetUp >,
+		sc::transition< EvStepComplete, StepCompleted >
+		> reactions;
+
+	StepQueued(my_context ctx) : my_base(ctx)
+	{
+		outermost_context().SetState("StepQueued");
+		std::cout << "Enter StepQueued\n";
+	}
+	~StepQueued()
+	{
+		std::cout << "Exit StepQueued\n";
+	}
+};
+
+class StepSetUp
+	: public sc::state<StepSetUp, Processing>
+{
+public:
+	typedef sc::transition< EvStepStart, StepRunning > reactions;
+
+	StepSetUp(my_context ctx) : my_base(ctx)
+	{
+		outermost_context().SetState("StepSetUp");
+		std::cout << "Enter StepSetUp\n";
+	}
+	~StepSetUp()
+	{
+		std::cout << "Exit StepSetUp\n";
+	}
+};
+
+class StepRunning
+	: public sc::state<StepRunning, Processing>
+{
+public:
+	
+	typedef mpl::list
+		<
+		sc::transition< EvStepEnd, StepEnd >,
+		sc::transition< EvStepJump, StepQueued >
+		> reactions;
+
+	StepRunning(my_context ctx) : my_base(ctx)
+	{
+		outermost_context().SetState("StepRunning");
+		std::cout << "Enter StepRunning\n";
+	}
+	~StepRunning()
+	{
+		std::cout << "Exit StepRunning\n";
+	}
+};
+
+class StepEnd
+	: public sc::state<StepEnd, Processing>
+{
+public:
+	typedef sc::transition< EvStepDepart, StepQueued > reactions;
+
+	StepEnd(my_context ctx) : my_base(ctx)
+	{
+		outermost_context().SetState("StepEnd");
+		std::cout << "Enter StepEnd\n";
+	}
+	~StepEnd()
+	{
+		std::cout << "Exit StepEnd\n";
+	}
+};
+
+class StepCompleted
+	: public sc::state<StepCompleted, Processing>
+{
+public:
+	typedef sc::transition< EvCompleted, ProcessCompleted > reactions;
+
+	StepCompleted(my_context ctx) : my_base(ctx)
+	{
+		outermost_context().SetState("StepCompleted");
+		std::cout << "Enter StepCompleted\n";
+	}
+	~StepCompleted()
+	{
+		std::cout << "Exit StepCompleted\n";
+	}
+};
 //
 //-----------------------------------------------------------------------------
 //
@@ -438,10 +549,10 @@ public:
 class Pause
 	: public sc::simple_state< Pause, Active,Pausing >
 {
-public:
+public: 
 	typedef mpl::list
 		< 
-		sc::transition< EvResume,sc::shallow_history< SettingUp > >,
+		sc::transition< EvResume, sc::deep_history< SettingUp > >,
 		sc::transition< EvStop, Stopping >,
 		sc::transition< EvAbort, Aborting > 
 		> reactions;

@@ -66,6 +66,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cout << "stop<CR>: Stops process job\n";
 	std::cout << "stopped<CR>: Stopped process job\n";
 	std::cout << "quit<CR>: Quits the program\n\n";
+
+	std::cout << "stepalloc<CR> : Alloc Step \n";
+	std::cout << "stepstart<CR> : Start Step \n";
 	
 	ProcessJob Pjm;
 	Pjm.initiate();
@@ -125,6 +128,30 @@ int _tmain(int argc, _TCHAR* argv[])
 		else if(key == "state")
 		{
 			std::cout<< "State: "<< Pjm.GetState() << "\n";
+		}
+		else if (key == "stepstart")
+		{
+			Pjm.process_event(EvStepStart());
+		}
+		else if (key == "stepalloc")
+		{
+			Pjm.process_event(EvStepAlloc());
+		}
+		else if (key == "stepend")
+		{
+			Pjm.process_event(EvStepEnd());
+		}
+		else if (key == "stepjump")
+		{
+			Pjm.process_event(EvStepJump());
+		}
+		else if (key == "stepdepart")
+		{
+			Pjm.process_event(EvStepDepart());
+		}
+		else if (key == "stepcomplete")
+		{
+			Pjm.process_event(EvStepComplete());
 		}
 
 		key = GetEvent();
